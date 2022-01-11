@@ -35,9 +35,7 @@
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-                                 with font-awesome or any other icon font library -->
-
+                           @include('layouts.sidebar')
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -63,6 +61,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
+                                @include('layouts.alerts')
                                 {{ $slot }}
                             </div>
 
