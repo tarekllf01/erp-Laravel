@@ -61,17 +61,14 @@
                                                 @endswitch
                                             </td>
                                             <td>
-                                                <li class="list-inline-item">
-                                                    <button class="btn btn-success btn-sm rounded-0" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                            class="fa fa-edit"></i></button>
-                                                </li>
-                                                <form>
-                                                    <li class="list-inline-item">
-                                                        <button class="btn btn-danger btn-sm rounded-0" type="button"
-                                                            data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                                class="fa fa-trash"></i></button>
-                                                    </li>
+                                                <a href="{{ route('user.edit',$user) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('user.destroy',$user) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                        <span class="d-none d-md-inline"></span>
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -1,0 +1,77 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="h4 font-weight-bold">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Quick Example</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form  method="POST" action="{{ route('user.update',$user) }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Ad ve Soyad:</label>
+                                    <input type="text" name="name" class="form-control"
+                                        placeholder="Ad ve Soyadı giriniz" value="{{ $user->name }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email addresi</label>
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                                        placeholder="Geçerili email adresi giriniz" value="{{ $user->email }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Şifre</label>
+                                    <input id="myInput" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current_password" value="{{ $user->password }}">
+                                        <br>
+                                    <input type="checkbox" onclick="myFunction()"> Şifreyi Göster
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Şifre Tekrarı</label>
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        name="password_confirmation" required autocomplete="current_password">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ __('Rolü') }}</label>
+                                    <select name="type" class="form-control">
+                                        <option @if($user->admin === 'admin') checked @endif value="admin">Admin</option>
+                                        <option @if($user->employee ==='employee') checked @endif value="employee">İşçi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</x-app-layout>
