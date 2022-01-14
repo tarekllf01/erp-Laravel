@@ -6,6 +6,6 @@
     {{ __('User Rolleri') }}
 </x-side-link>
 @endif
-<x-side-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard.*')" icon="fas fa-building">
+<x-side-link href="{{ route('product.index') }}" :active="request()->routeIs('product.*')" icon="fas fa-building">
     {{ __('Giren Mallar') }}
 </x-side-link>
