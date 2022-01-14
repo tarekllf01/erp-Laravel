@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'current_password',
         'type',
+        'slug',
     ];
 
     /**
@@ -43,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 }

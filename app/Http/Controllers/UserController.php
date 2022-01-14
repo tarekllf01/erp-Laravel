@@ -15,6 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        if(request()->get('name')){
+            $users=User::where('name','LIKE',"%".request()->get('name')."%");
+        }
+        if(request()->get('type')){
+            $users=User::where('type',request()->get('type'));
+        }
         $users = User::paginate(5);
         return view('user.index', compact('users'));
     }

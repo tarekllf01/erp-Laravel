@@ -17,20 +17,18 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Kullanıcı Listeleri</h3>
-
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right"
-                                        placeholder="Search">
-
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                            <form method="GET" action="">
+                                <div class="form-row">
+                                    <div class="col-md-3">
+                                        <input type="text" name="name" value="{{request()->get('name')}}" placeholder="Kullanıcı Ara" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        @if(request()->get('name') )
+                                        <a class="btn btn-secondary btn-sm" href="{{ route('user.index') }}"> {{__('Sıfırla') }}</a>
+                                        @endif
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
@@ -61,8 +59,10 @@
                                                 @endswitch
                                             </td>
                                             <td>
-                                                <a href="{{ route('user.edit',$user) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                                <form action="{{ route('user.destroy',$user) }}" method="post" class="d-inline-block">
+                                                <a href="{{ route('user.edit', $user) }}"
+                                                    class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ route('user.destroy', $user) }}" method="post"
+                                                    class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-sm btn-danger">
