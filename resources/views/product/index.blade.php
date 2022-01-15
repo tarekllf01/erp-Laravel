@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Kullanıcı Bilgileri</x-slot>
+    <x-slot name="title">Toplam Günlük Giren Mallar</x-slot>
     <x-slot name="header">
         <h2 class="h4 font-weight-bold">
             <p align="right"><a href="{{ route('user.create') }}" class="btn btn-success btn btn-lg" role="button"
@@ -7,7 +7,7 @@
                     &nbsp;
                     <i class="fas fa-plus"></i>
                 </a></p>
-            {{ __('Kullanıcı Bilgileri') }}
+            {{ __('Toplam Giren Mallar') }}
         </h2>
     </x-slot>
 
@@ -41,6 +41,7 @@
                                         <th>Ürün İsmi</th>
                                         <th>Birim/Kilo</th>
                                         <th>Birim Fiyatı</th>
+                                        @if(auth()->user()->type == 'admin')<th>Toplam Fiyat</th>@endif
                                         <th>Eylem</th>
                                     </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->unit }}</td>
                                             <td>{{ $product->unit_price }}</td>
+                                            @if(auth()->user()->type == 'admin')<td>{{ $product->total_price }}  ₺</td>@endif
                                             <td>
                                                 <a href="{{ route('product.edit', $product) }}"
                                                     class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
