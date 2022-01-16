@@ -20,7 +20,7 @@
                             <form method="GET" action="">
                                 <div class="form-row">
                                     <div class="col-md-3">
-                                        <input type="text" name="name" value="{{request()->get('name')}}" placeholder="Kullanıcı Ara" class="form-control">
+                                        <input type="text" name="name" value="{{request()->get('name')}}" placeholder="Ürün Ara" class="form-control">
                                     </div>
                                     <div class="col-md-2">
                                         @if(request()->get('name') )

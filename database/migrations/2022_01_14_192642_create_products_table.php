@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('unit');
-            $table->integer('unit_price');
-            $table->integer('total_price');
+            $table->float('unit_price');
+            $table->string('slug');
             $table->timestamps();
         });
     }

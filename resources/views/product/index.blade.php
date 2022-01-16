@@ -52,7 +52,7 @@
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->unit }}</td>
                                             <td>{{ $product->unit_price }}</td>
-                                            @if(auth()->user()->type == 'admin')<td>{{ $product->total_price }}  ₺</td>@endif
+                                            @if(auth()->user()->type == 'admin')<td>{{ $product->price }}  ₺</td>@endif
                                             <td>
                                                 <a href="{{ route('product.edit', $product) }}"
                                                     class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>

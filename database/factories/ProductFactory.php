@@ -15,11 +15,12 @@ class ProductFactory extends Factory
     {
         $unit = $this->faker->randomNumber(1,10);
         $unit_price = $this->faker->randomNumber(1,20);
+        $name = $this->faker->name();
         return [
-            'name' => $this->faker->name(),
+            'name' => $name,
             'unit' => $unit,
             'unit_price' =>  $unit_price,
-            'total_price' => $unit*$unit_price,
+            'slug' =>$name,
         ];
     }
 }
