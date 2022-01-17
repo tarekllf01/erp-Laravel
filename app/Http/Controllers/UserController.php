@@ -94,6 +94,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index')->with('success', 'Quiz Başarılı Bir Şekilde Silinmiştir');
+        return redirect()->route('user.index')->with('success', 'Veri Başarılı Bir Şekilde Silinmiştir');
     }
 }
