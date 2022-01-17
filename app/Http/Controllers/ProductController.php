@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -36,9 +37,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        Product::create($request->post())->get();
+        return redirect()->route('product.index')->with('success','Ürün Başarılı Bir Şekilde Oluşturulmuştur');
     }
 
     /**
@@ -60,7 +62,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product =Product::find($id);
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -70,9 +73,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product=Product::find($id);
+        $product->update($request->validated());
+        return redirect()->route('product.index')->with('success', 'Başarılı Bir Şekilde Düzenlenmiştir.');
     }
 
     /**
@@ -81,8 +86,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index')->with('success', 'Ürün Başarılı Bir Şekilde Silinmiştir');
     }
 }
