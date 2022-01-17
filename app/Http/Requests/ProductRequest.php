@@ -25,8 +25,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:150',
-            'unit' => 'required|integer',
-            'unit_price' => 'required|integer',
+            'unit' => 'required|between:0,99.99',
+            'unit_price' => 'required|between:0,99.99',
         ];
     }
     public function attributes()
