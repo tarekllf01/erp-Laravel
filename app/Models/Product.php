@@ -5,6 +5,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -33,7 +34,6 @@ class Product extends Model
             $unit_price = $this->unit_price;
             $price = $unit*$unit_price ;
             return $price;
-
     }
 
 }

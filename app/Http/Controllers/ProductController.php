@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,12 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (request()->get('name')) {
-            $products = Product::where('name', 'LIKE', "%" . request()->get('name') . "%");
-        }
         $products = Product::paginate(20);
         return view('product.index', compact('products'));
     }
+
 
     /**
      * Show the form for creating a new resource.
