@@ -20,7 +20,7 @@
                             <div class="card">
                                 <div class="form-row">
                                     <div class="">
-                                        <p align="right"><a href="{{ route('product.show',$products) }}"
+                                        <p align="right"><a href="{{ route('product.index') }}"
                                                 class="btn btn-success btn btn-lg" role="button"
                                                 aria-pressed="true">Toplam Maliyet
                                                 &nbsp;
