@@ -27,5 +27,5 @@ require __DIR__.'/auth.php';
 Route::group([
     'middleware' => ['auth','IsAdmin'],'prefix' => 'admin',],function(){
         Route::resource('user', UserController::class);
-});
+    });
 Route::resource('product', ProductController::class);
